@@ -11,11 +11,12 @@ const output = document.querySelector(".output");
 const searchQuery = document.querySelector(".searchQ");
 
 btn.addEventListener("click", (e) => {
-  //   let paras = "?part=snippet&";
-  let paras = "?part=snippet&channelId=UCgsZ8_79Eclct_VDoql_Dwg";
+  let paras = "?part=snippet&";
+  //   let paras = "?part=snippet&channelId=UCgsZ8_79Eclct_VDoql_Dwg";
   let maxResults = "&maxResults=10";
   let order = "&order=relevance";
   let q = searchQuery.value || "test";
+  searchQuery.value = "";
   let searchTerm = "&q=" + q;
   let connKey = "&key=" + apiKey;
   let url = baseurl + paras + maxResults + order + searchTerm + connKey;
@@ -24,7 +25,7 @@ btn.addEventListener("click", (e) => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      output.innerHTML = "";
+      output.innerHTML = `<div class="search">Search for ${q}</div>`;
       data.items.forEach((item) => {
         const ele = makeCard(item);
         output.append(ele);
@@ -39,8 +40,9 @@ function makeCard(data) {
   console.log(data);
   const vid = data.snippet;
   const main = document.createElement("div");
-  main.classList.add("box");
+  main.classList.add("container");
   const div1 = document.createElement("div");
+  div1.classList.add("box");
   const thumbnail = vid.thumbnails.high.url;
   const linkVideo = `https://www.youtube.com/watch?v=${data.id.videoId}`;
   div1.innerHTML = `<p>${vid.title}</p><img src=${thumbnail}> <div>${vid.description}</div><div>Link <a href="${linkVideo}" target="_blank">${linkVideo}</a></div>`;

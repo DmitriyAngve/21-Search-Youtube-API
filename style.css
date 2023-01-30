@@ -2,14 +2,60 @@
   box-sizing: border-box;
 }
 
+.output {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search {
+  flex: 100%;
+  font-size: 2em;
+}
+
+.container {
+  flex: 50%;
+  flex-wrap: wrap;
+  font-size: 0.9em;
+  text-align: center;
+}
+
 .box {
-  width: 50%;
   padding: 5px;
-  display: inline-block;
   border: 1px solid black;
-  margin: 10px 0;
 }
 
 .box p {
   text-transform: uppercase;
+}
+
+.box img {
+  max-width: 100%;
+}
+
+.btn {
+  background-color: red;
+  color: wheat;
+  padding: 10px;
+  font-size: 1.2em;
+  display: block;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 80%;
+}
+
+.searchQ {
+  line-height: 30px;
+  font-size: 1.2em;
+  width: 90%;
+  display: block;
+  margin: auto;
+}
+
+@media (max-width: 680px) {
+  .container {
+    flex: 100%;
+  }
 }
